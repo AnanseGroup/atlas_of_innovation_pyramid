@@ -1,6 +1,6 @@
 <div id="navigation-bar-container">
   <a class="navigation-bar-logo" href="/">
-    <img src="/assets/logo_ananse.png" id="navigation-bar-home">
+    <img src="${request.static_url('atlas_of_innovation:static/assets/logo_ananse.png')}" id="navigation-bar-home">
   </a>
   <div class="navigation-bar">
     <a href="/map" id="navigation-bar-map-button" class="navigation-bar-button selected-navigation-bar-button">MAP</a>
@@ -10,7 +10,7 @@
 	</div>
 	<div class="navigation-bar-contact-container">
 		<a href="/">
-    	<img src="/assets/contact_us.png" id="navigation-bar-contact-button">
+    	<img src="${request.static_url('atlas_of_innovation:static/assets/contact_us.png')}" id="navigation-bar-contact-button">
     </a>
 	</div>
 </div>

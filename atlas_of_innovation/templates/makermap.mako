@@ -2,20 +2,20 @@
 <html>
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Source+Sans+Pro:200,300,300i,400,600" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="/css/leaflet.css" />
-    <link rel="stylesheet" type="text/css" href="/css/MarkerCluster.css" />
-    <link rel="stylesheet" type="text/css" href="/css/MarkerCluster.Default.css" />
-    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
-    <script type='text/javascript' src="/js/leaflet.js"></script>
-		<script type='text/javascript' src='/js/leaflet.markercluster.js'></script>
+	<link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/leaflet.css')}" />
+    <link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/MarkerCluster.css')}" />
+    <link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/MarkerCluster.Default.css')}" />
+    <link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/stylesheet.css')}" />
+    <script type='text/javascript' src="${request.static_url('atlas_of_innovation:static/js/leaflet.js')}"></script>
+		<script type='text/javascript' src="${request.static_url('atlas_of_innovation:static/js/leaflet.markercluster.js')}"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <title>Ananse Innovation Map</title>
 </head>
 <body>
 
-    <%include file="/snippets/header.html" />
+    <%include file="snippets/header.mako" />
 
-    <%include file="/snippets/contribute.html" />
+    <%include file="snippets/contribute.mako" />
 
     <div id="map-page-title-container">
     	<h1 id="map-page-title">Innovation Spaces Near And Far</h1>
@@ -47,21 +47,21 @@
             % for a in ("Type", "Theme", "Originator"):
                 <a href="/" id="filter-bar-type-button" class="filter-bar-button" data-filter="${a.lower()}">
                     <span class="filter-button-text">${a}</span>
-                    <img src="/assets/plus.png" class="filter-button-plus">
-                    <img src="/assets/minus.png" class="filter-button-minus">
+                    <img src="${request.static_url('atlas_of_innovation:static/assets/plus.png')}" class="filter-button-plus">
+                    <img src="${request.static_url('atlas_of_innovation:static/assets/minus.png')}" class="filter-button-minus">
                 </a>
             % endfor
             <div id="sponsor-container">
 <!--                <span id="navigation-bar-supported-text">Supported by</span> -->
                 <a href="https://www.giz.de/" target="_blank">
-                    <img src="/assets/giz-logo.png" id="sponsor-giz">
+                    <img src="${request.static_url('atlas_of_innovation:static/assets/giz-logo.png')}" id="sponsor-giz">
                 </a>
                 <a href="https://www.fabfoundation.org/" target="_blank">
-                    <img src="/assets/fab-foundation-logo.png" id="sponsor-fab-foundation">
+                    <img src="${request.static_url('atlas_of_innovation:static/assets/fab-foundation-logo.png')}" id="sponsor-fab-foundation">
                 </a>
             </div>
 		</div>
-    <p id="markerjson" hidden>${c.markers}</p>
-    <script type='text/javascript' src="/js/main.js"></script>
+    <p id="markerjson" hidden>\$\{c.markers\}</p>
+    <script type='text/javascript' src="${request.static_url('atlas_of_innovation:static/js/main.js')}"></script>
 </body>
 </html>
