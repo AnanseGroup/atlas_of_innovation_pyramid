@@ -2,21 +2,21 @@
 <html>
 <head>
 	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Source+Sans+Pro:200,300,300i,400,600" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/leaflet.css')}" />
-    <link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/MarkerCluster.css')}" />
-    <link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/MarkerCluster.Default.css')}" />
-    <link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/stylesheet.css')}" />
-    <script type='text/javascript' src="${request.static_url('atlas_of_innovation:static/js/leaflet.js')}"></script>
-	<script type='text/javascript' src='${request.static_url('atlas_of_innovation:static/js/leaflet.markercluster.js')}'></script>
+	<link rel="stylesheet" type="text/css" href="/css/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="/css/MarkerCluster.css" />
+    <link rel="stylesheet" type="text/css" href="/css/MarkerCluster.Default.css" />
+    <link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
+    <script type='text/javascript' src="/js/leaflet.js"></script>
+	<script type='text/javascript' src='/js/leaflet.markercluster.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type='text/javascript' src="${request.static_url('atlas_of_innovation:static/js/page.js')}"></script>
+    <script type='text/javascript' src="/js/page.js"></script>
     <title>Ananse Innovation Map</title>
 </head>
 <body>
 
-    <%include file="snippets/header.mako" />
+    <%include file="/snippets/header.html" />
 
-    <%include file="snippets/contribute.mako" />
+    <%include file="/snippets/contribute.html" />
 
     <div id="map-page-title-container">
     	<h1 id="map-page-title">Crowdsourced Atlas of Community Innovation Spaces</h1>
@@ -63,13 +63,13 @@
             % for a in ("Type", "Theme"):
                 <a href="/" id="filter-bar-type-button" class="filter-bar-button" data-filter="${a.lower()}">
                     <span class="filter-button-text">${a}</span>
-                    <img src="${request.static_url('atlas_of_innovation:static/assets/plus.png')}" class="filter-button-plus">
-                    <img src="${request.static_url('atlas_of_innovation:static/assets/minus.png')}" class="filter-button-minus">
+                    <img src="/assets/plus.png" class="filter-button-plus">
+                    <img src="/assets/minus.png" class="filter-button-minus">
                 </a>
             % endfor
         </div>
         <a id="sponsor-giz" href="http://www.bmz.de/en/index.html" target="_blank">
-            <img src="${request.static_url('atlas_of_innovation:static/assets/giz-logo.png')}">
+            <img src="/assets/giz-logo.png">
         </a>    
 
 	</div>    
@@ -138,6 +138,6 @@
             </li>
         </ul>  -->
         </div>
-    <script type='text/javascript' src="${request.static_url('atlas_of_innovation:static/js/map.js')}"></script>
+    <script type='text/javascript' src="/js/map.js"></script>
 </body>
 </html>
