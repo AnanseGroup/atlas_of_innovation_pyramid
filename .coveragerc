@@ -1,0 +1,3 @@
+[run]
+source = atlas_of_innovation
+omit = atlas_of_innovation/test*
