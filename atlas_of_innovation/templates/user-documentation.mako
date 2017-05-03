@@ -1,11 +1,11 @@
-<%include file="/snippets/head.html" />
+<%include file="snippets/head.mako" />
 
-<%include file="/snippets/header.html" />
+<%include file="snippets/header.mako" />
 
-<%include file="/snippets/contribute.html" />
+<%include file="snippets/contribute.mako" />
 
 <div id="goals-page" class="container">
-	<%include file="/snippets/docs-menu.html"/>
+	<%include file="snippets/docs-menu.mako"/>
 	<div class="page-intro-section">
 			<h2 class="intro-header dark-blue">Datafields and definitions</h2>
 	</div>
@@ -51,4 +51,4 @@
 
 </div>
 
-<%include file="/snippets/footer.html" />
+<%include file="snippets/footer.mako" />

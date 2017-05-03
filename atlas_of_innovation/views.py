@@ -9,21 +9,21 @@ def my_view(request):
 def map_of_innovation(request):
     return {'project': 'atlas-of-innovation'}
 
-# @view_config(route_name='about', renderer='templates/about.mako')
-# def map_of_innovation(request):
-#     return {'project': 'atlas-of-innovation'}
+@view_config(route_name='about', renderer='templates/about.mako')
+def about(request):
+    return {'project': 'atlas-of-innovation'}
 
-# @view_config(route_name='goals', renderer='templates/goals.mako')
-# def map_of_innovation(request):
-#     return {'project': 'atlas-of-innovation'}
+@view_config(route_name='goals', renderer='templates/goals.mako')
+def goals(request):
+    return {'project': 'atlas-of-innovation'}
 
-# @view_config(route_name='userDocs', renderer='templates/user-documentation.mako')
-# def map_of_innovation(request):
-#     return {'project': 'atlas-of-innovation'}
+@view_config(route_name='userDocs', renderer='templates/user-documentation.mako')
+def userDocs(request):
+    return {'project': 'atlas-of-innovation'}
 
-# @view_config(route_name='devDocs', renderer='templates/developer-documentation.mako')
-# def map_of_innovation(request):
-#     return {'project': 'atlas-of-innovation'}
+@view_config(route_name='devDocs', renderer='templates/developer-documentation.mako')
+def devDocs(request):
+    return {'project': 'atlas-of-innovation'}
 
 		
     

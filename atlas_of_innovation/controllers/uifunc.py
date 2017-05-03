@@ -85,17 +85,7 @@
 #       else :
 #         return 'There is no space with this id. Please recheck and submit'
 
-#     def about(self):
-#         return render('/about.html')		
-    
-#     def goals(self):
-#         return render('/goals.html')
 
-#     def userDocs(self):
-#     	return render('/user-documentation.html')
-
-#     def devDocs(self):
-#     	return render('/developer-documentation.html')
 
 #     def comingSoon(self):
 # 	return render('/coming-soon.html')
@@ -123,8 +113,5 @@
 #     def editspace(self,id=None):
 # 	return render('/formedit.html')
 
-#     #   map.connect('/map', controller="uifunc", action="index")
-#     # map.connect('/about', controller="uifunc", action="about")
-#     # map.connect('/about/goals', controller="uifunc", action="goals")
-#     # map.connect('/docs', controller="uifunc", action="userDocs")
-#     # map.connect('/docs/developer', controller="uifunc", action="devDocs")
+
+

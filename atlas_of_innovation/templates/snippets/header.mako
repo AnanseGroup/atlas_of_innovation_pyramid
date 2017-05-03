@@ -10,7 +10,10 @@
 	</div>
 	<div class="navigation-bar-contact-container">
 		<a href="/">
-    	<img src="${request.static_url('atlas_of_innovation:static/assets/contact_us.png')}" id="navigation-bar-contact-button">
+    	<!-- <img src="${request.static_url('atlas_of_innovation:static/assets/contact_us.png')}" id="navigation-bar-contact-button"> -->
+
+        
+    <a href="mailto:anansegroup@gmail.com" id="navigation-bar-contact-button" class="no-underline navigation-right dark-blue">Contact Us</a>    
     </a>
 	</div>
 </div>
