@@ -1,12 +1,11 @@
 <%! import random %>
 
-<%include file="/snippets/head.html" />
-
-<%include file="/snippets/header.html" />
+<%include file="snippets/head.mako" />
+<%include file="snippets/header.mako" />
 
 <!--%include file="/snippets/wiki-filter-bar.html" /-->
 
-<%include file="/snippets/contribute.html" />
+<%include file="snippets/contribute.mako" />
 
 <div class="container wiki-content source-sans">
 	<div class="columns two columns-wide">
@@ -61,4 +60,4 @@
 </div>
 <script type='text/javascript' src="/js/wiki.js"></script>
 
-<%include file="/snippets/footer.html" />
+<%include file="snippets/footer.mako" />

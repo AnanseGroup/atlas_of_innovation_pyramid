@@ -1,10 +1,11 @@
 from pyramid.view import view_config
 
 
-@view_config(route_name='home', renderer='templates/mytemplate.mako')
+@view_config(route_name='boilerplate', renderer='templates/mytemplate.mako')
 def my_view(request):
     return {'project': 'atlas-of-innovation'}
 
+@view_config(route_name='home', renderer='templates/makermap.mako')
 @view_config(route_name='map', renderer='templates/makermap.mako')
 def map_of_innovation(request):
     return {'project': 'atlas-of-innovation'}
@@ -25,13 +26,7 @@ def userDocs(request):
 def devDocs(request):
     return {'project': 'atlas-of-innovation'}
 
-		
-    
-    # def goals(self):
-    #     return render('/goals.html')
+@view_config(route_name='wiki', renderer='templates/wiki.mako')
+def wiki(request):
+    return {'project': 'atlas-of-innovation'}
 
-    # def userDocs(self):
-    # 	return render('/user-documentation.html')
-
-    # def devDocs(self):
-    # 	return render('/developer-documentation.html')
