@@ -24,7 +24,7 @@
 				</div>
 				<ul class="wiki-list">
 					% for country in countries:
-						<a href="/uifunc/wikilist/country?name=${country}"<li>${country}<!--span class="count pink">(${random.randrange(1,100)})</span--></li></a> <br/>
+						<a href="/uifunc/wikilist/country/${country}"<li>${country}<!--span class="count pink">(${random.randrange(1,100)})</span--></li></a> <br/>
 					% endfor
 				</ul>
 			</div>
@@ -51,13 +51,13 @@
 				<ul class="wiki-list">
 				% for service in ("Agriculture","Appropriate Technology","Biology","Design","Education","Food","Materials","Media","Politics","Science","Youth"):
 	
-				<a href="/uifunc/wikilist/theme?name=${service}"><li>${service}<!--span class="count pink">(${random.randrange(1,350)})</span--></li>
+				<a href="/uifunc/wikilist/theme/${service}"><li>${service}<!--span class="count pink">(${random.randrange(1,350)})</span--></li>
 					% endfor
 				</ul>
 			</div>
 		</div>
 	</div>
 </div>
-<script type='text/javascript' src="/js/wiki.js"></script>
+<script type='text/javascript' src="static/js/wiki.js"></script>
 
 <%include file="snippets/footer.mako" />

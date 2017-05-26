@@ -37,19 +37,37 @@ def devDocs(request):
 def wiki(request):
     with open('countries.json') as json_file:    
         data = json.load(json_file)
-        print (data)
         c_list=[]
         for p in data['country']:
-            c_list.append((p['countryName']))
+            c_list.append(p['countryName'])
         return {'countries':c_list}
     return {}
+
+@view_config(route_name='singlefilterlist', renderer='templates/list.mako')
+def singlefilterpreprocess(request):
+    return {'filtertype':request.matchdict['param'], 'filterparam':request.matchdict['value']}
+
+
+@view_config(route_name='getspace', renderer='templates/wikipage.mako')
+def getspace(request):
+    space = request.dbsession.query(Innovation_Space).get(request.matchdict['id'])
+    return space.__json__(request)
+
+
+@view_config(route_name='singlefilter', renderer='json')
+def singlefilter(request):
+    try:
+        spaces = request.dbsession.query(Innovation_Space)\
+            .filter(getattr(Innovation_Space, request.params['type'])==request.params['name']).all()
+    except DBAPIError:
+        return Response(db_err_msg, content_type='text/plain', status=500)
+    return translate_to_jsonable(spaces)
 
 
 @view_config(route_name='all_innovation_spaces', renderer='json')
 def all_innovation_spaces(request):
     try:
         spaces = request.dbsession.query(Innovation_Space).all()
-        print(spaces)
     except DBAPIError:
         return Response(db_err_msg, content_type='text/plain', status=500)
     return translate_to_jsonable(spaces)

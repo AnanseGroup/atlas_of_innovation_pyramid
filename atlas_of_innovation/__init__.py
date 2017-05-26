@@ -29,6 +29,9 @@ def main(global_config, **settings):
     config.add_route('boilerplate', '/old_home')
     config.add_route('all_innovation_spaces', '/baseapi/getAllSpaces')
     config.add_route('filter_innovation_spaces', '/baseapi/filteredSpaces')
+    config.add_route('singlefilterlist', '/uifunc/wikilist/{param}/{value}')
+    config.add_route('singlefilter', '/searchapi/findSpacesByType')
+    config.add_route('getspace', '/wikipage/{id}')
 
     #     #   map.connect('/map', controller="uifunc", action="index")
     config.scan()
