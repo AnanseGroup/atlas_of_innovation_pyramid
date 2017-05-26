@@ -32,7 +32,7 @@ var allTypes = {
 };
 
 var myIcon = L.icon({
-    iconUrl: '../assets/pin1.png',
+    iconUrl: 'static/images/pin1.png',
     iconSize: [23, 30],
     iconAnchor: [11, 29],
     popupAnchor: [0, -30]
@@ -48,26 +48,27 @@ $.get('baseapi/getAllSpaces',{cache: true}, function(spaces) {
 
 function buildMarkers(allSpaces) {
 	$(".loader-text").text("Building Map . . .");
+	console.log(allSpaces)
 	for (i=0; i<allSpaces.length; ++i) {	
 		var space = allSpaces[i];
 		if (space.latitude && space.longitude) {
 			try {
 				var marker = L.marker([space.latitude, space.longitude], {icon: myIcon});
-				var placeData = {}
-				placeInfoRequired.forEach(function(key) {
-					if (typeof space[key] !== 'undefined') {
-						if (key == 'primary_type') {
-							placeData['type'] = space[key].toLowerCase().trim();
-						} else if (key == 'theme') {
-							placeData['theme'] = space[key].toLowerCase().trim();
-						} else {
-							placeData[key] = space[key];
-						}
-					}	
-				});
-				marker.placeData = placeData;
-				var popup = createPopup(space);
-				marker.bindPopup(popup, {minWidth: "250"});
+				// var placeData = {}
+				// placeInfoRequired.forEach(function(key) {
+				// 	if (typeof space[key] !== 'undefined') {
+				// 		if (key == 'primary_type') {
+				// 			placeData['type'] = space[key].toLowerCase().trim();
+				// 		} else if (key == 'theme') {
+				// 			placeData['theme'] = space[key].toLowerCase().trim();
+				// 		} else {
+				// 			placeData[key] = space[key];
+				// 		}
+				// 	}	
+				// });
+				// marker.placeData = placeData;
+				// var popup = createPopup(space);
+				// marker.bindPopup(popup, {minWidth: "250"});
 				markerClusters.addLayer(marker);
 				allMarkers.push(marker);
 			} catch (e) {
@@ -87,7 +88,7 @@ function createPopup(space) {
 	var popupText = "<div class='popup-header'>";
 	popupText += "<h3>"+space.name+"</h3>";
 	popupText += "</div>";
-	popupText += "<p><img src='../assets/pin2.png' height='14' class='popup-location-text'><span style='margin-bottom:3px;position:fixed;'>";
+	popupText += "<p><img src='static/images/pin2.png' height='14' class='popup-location-text'><span style='margin-bottom:3px;position:fixed;'>";
 
 	if (space.city != "") {
 		popupText += space.city+", "+space.country;
@@ -123,7 +124,7 @@ function createPopup(space) {
  	}
 	popupText += "</div>";
 	popupText += "<p>"+space.description+"</p>";			
-	popupText += "<a href='"+space.wiki+"'><img src='../assets/space_page.png' class='space-page-button'></a>";
+	popupText += "<a href='"+space.wiki+"'><img src='static/images/space_page.png' class='space-page-button'></a>";
 
 	return popupText;
  }

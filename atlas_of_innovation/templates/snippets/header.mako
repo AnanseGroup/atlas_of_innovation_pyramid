@@ -1,6 +1,6 @@
 <div id="navigation-bar-container">
   <a class="navigation-bar-logo" href="/">
-    <img src="${request.static_url('atlas_of_innovation:static/assets/logo_ananse.png')}" id="navigation-bar-home">
+    <img src="${request.static_url('atlas_of_innovation:static/images/logo_ananse.png')}" id="navigation-bar-home">
   </a>
   <div class="navigation-bar">
     <a href="/map" id="navigation-bar-map-button" class="navigation-bar-button selected-navigation-bar-button">MAP</a>

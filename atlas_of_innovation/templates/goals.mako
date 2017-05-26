@@ -16,7 +16,7 @@
 		<h2 class="section-header dark-blue">What’s a “community innovation space”?</h2>
 		<div class="columns two">
 			<div>
-			<img src="${request.static_url('atlas_of_innovation:static/assets/goals.png')}">
+			<img src="${request.static_url('atlas_of_innovation:static/images/goals.png')}">
 			<p class="caption">image of MITERS via Bilal Ghalib</p>
 			</div>
 			<div>

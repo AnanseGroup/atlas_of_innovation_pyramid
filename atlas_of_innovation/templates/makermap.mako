@@ -63,13 +63,13 @@
             % for a in ("Type", "Theme"):
                 <a href="/" id="filter-bar-type-button" class="filter-bar-button" data-filter="${a.lower()}">
                     <span class="filter-button-text">${a}</span>
-                    <img src="${request.static_url('atlas_of_innovation:static/assets/plus.png')}" class="filter-button-plus">
-                    <img src="${request.static_url('atlas_of_innovation:static/assets/minus.png')}" class="filter-button-minus">
+                    <img src="${request.static_url('atlas_of_innovation:static/images/plus.png')}" class="filter-button-plus">
+                    <img src="${request.static_url('atlas_of_innovation:static/images/minus.png')}" class="filter-button-minus">
                 </a>
             % endfor
         </div>
         <a id="sponsor-giz" href="http://www.bmz.de/en/index.html" target="_blank">
-            <img src="${request.static_url('atlas_of_innovation:static/assets/giz-logo.png')}">
+            <img src="${request.static_url('atlas_of_innovation:static/images/giz-logo.png')}">
         </a>    
 
 	</div>    
