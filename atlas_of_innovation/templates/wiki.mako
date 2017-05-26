@@ -23,7 +23,7 @@
 					<a href="#_" class="see-all">See All</a>
 				</div>
 				<ul class="wiki-list">
-					% for country in c.list:
+					% for country in countries:
 						<a href="/uifunc/wikilist/country?name=${country}"<li>${country}<!--span class="count pink">(${random.randrange(1,100)})</span--></li></a> <br/>
 					% endfor
 				</ul>

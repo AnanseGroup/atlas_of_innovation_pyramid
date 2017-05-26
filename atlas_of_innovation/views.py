@@ -1,3 +1,5 @@
+import json
+
 from pyramid.response import Response
 from pyramid.view import view_config
 
@@ -33,6 +35,13 @@ def devDocs(request):
 
 @view_config(route_name='wiki', renderer='templates/wiki.mako')
 def wiki(request):
+    with open('countries.json') as json_file:    
+        data = json.load(json_file)
+        print (data)
+        c_list=[]
+        for p in data['country']:
+            c_list.append((p['countryName']))
+        return {'countries':c_list}
     return {}
 
 
