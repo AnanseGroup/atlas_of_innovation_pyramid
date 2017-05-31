@@ -34,6 +34,7 @@ def main(global_config, **settings):
     config.add_route('spacepage', '/wikipage/{id}')
     config.add_route('editspace', '/editspace/{id}')
     config.add_route('getspace', '/baseapi/getSpace/{id}')
+    config.add_route('change_space', '/baseapi/changeSpace/{id}')
 
     #     #   map.connect('/map', controller="uifunc", action="index")
     config.scan()

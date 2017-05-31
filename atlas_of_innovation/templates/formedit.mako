@@ -6,12 +6,12 @@
     <script type='text/javascript' src="${request.static_url('atlas_of_innovation:static/js/editform.js')}"></script>
 <link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/stylesheet.css')}"/>
 <link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/form.css')}"/>
-<form id="rendered-form" name="editspace" method="get" action="/baseapi/changeSpace/${request.params.get('id')}">
+<form id="rendered-form" name="editspace" method="get" action="/baseapi/changeSpace/${request.matchdict['id']}">
 <fieldset>
 <div class="fb-text form-group field-text-name"><label for="text-name" class="fb-text-label">Name <span class="required">*</span> </label> <input type="text" required="" class="form-control" name="name" id="text-name" aria-required="true"></div>
 </fieldset>
 <fieldset>
-<div class="fb-select form-group field-primary-type"><label for="primary-type" class="fb-select-label">Type <span class="required">*</span> </label><select type="select" required="" class="form-control" name="primary_type" id="primary-type" aria-required="true"><option value="Hub">Hub</option><option value="Workshop">Workshop</option><option value="Event">Event</option>
+<div class="fb-select form-group field-primary-type"><label for="types" class="fb-select-label">Type <span class="required">*</span> </label><select type="select" required="" class="form-control" name="types" id="types" aria-required="true"><option value="Hub">Hub</option><option value="Workshop">Workshop</option><option value="Event">Event</option>
 <option value="Gallery">Gallery</option>
 <option value="Retail">Retail</option>
 <option value="Virtual">Virtual</option>

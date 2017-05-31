@@ -87,13 +87,14 @@ def filter_innovation_spaces(request):
     return {'project': 'atlas-of-innovation'}
 
 
-# @view_config(route_name='change_space', renderer='thanks.mako')
-# def changeSpace(request):
-#     #change a space
-#     #TO DO: implement change space for verified space
+@view_config(route_name='change_space', renderer='templates/thanks.mako')
+def changeSpace(request):
+    #change a space
+    #TO DO: implement change space for verified space
 
-#     result = request.dbsession.query(Innovation_Space).filter(Innovation_Space.primary_id==id).update(request.params)
-#     return {'primary_id':id}  
+    print (request.params)
+    result = request.dbsession.query(Innovation_Space).filter(Innovation_Space.primary_id==request.matchdict['id']).update(request.params)
+    return {'primary_id':id}  
 
 
 db_err_msg = """\
