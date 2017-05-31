@@ -33,7 +33,7 @@
             <ul id="type-filter" class="filter-menu">
                 % for type in ("All", "Workshop","Hub", "Event", "Ecovillage", "Virtual"):
                     <li>
-                        <a href="#" class="filter-item" data-filter-group="type" data-filter-item="${type.lower()}">
+                        <a href="#" class="filter-item" data-filter-group="types" data-filter-item="${type.lower()}">
                             <div class="filter-type-color ${type.lower()}-color"></div>
                             % if type == 'Workshop' :
                                 Workshops

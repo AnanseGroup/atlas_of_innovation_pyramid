@@ -40,7 +40,6 @@ var myIcon = L.icon({
 
 var allMarkers = [];
 var noLocation = [];
-var placeInfoRequired = ['name', 'city', 'country', 'primary_type', 'theme'];
 
 $.get('baseapi/getAllSpaces',{cache: true}, function(spaces) {
 	buildMarkers(spaces);
@@ -48,27 +47,15 @@ $.get('baseapi/getAllSpaces',{cache: true}, function(spaces) {
 
 function buildMarkers(allSpaces) {
 	$(".loader-text").text("Building Map . . .");
-	console.log(allSpaces)
 	for (i=0; i<allSpaces.length; ++i) {	
 		var space = allSpaces[i];
 		if (space.latitude && space.longitude) {
 			try {
 				var marker = L.marker([space.latitude, space.longitude], {icon: myIcon});
-				// var placeData = {}
-				// placeInfoRequired.forEach(function(key) {
-				// 	if (typeof space[key] !== 'undefined') {
-				// 		if (key == 'primary_type') {
-				// 			placeData['type'] = space[key].toLowerCase().trim();
-				// 		} else if (key == 'theme') {
-				// 			placeData['theme'] = space[key].toLowerCase().trim();
-				// 		} else {
-				// 			placeData[key] = space[key];
-				// 		}
-				// 	}	
-				// });
-				// marker.placeData = placeData;
-				// var popup = createPopup(space);
-				// marker.bindPopup(popup, {minWidth: "250"});
+
+				marker.placeData = space;
+				var popup = createPopup(space);
+				marker.bindPopup(popup, {minWidth: "250"});
 				markerClusters.addLayer(marker);
 				allMarkers.push(marker);
 			} catch (e) {
@@ -98,19 +85,12 @@ function createPopup(space) {
 	popupText += "</span></p>"+"<a class='popup-website-link' target='_blank' href='http://"+space.primary_website+"'>"+space.primary_website+"</a><div class='popup-type-container'>"; 
 
 	var types = [];
-	if (space.primary_type.trim() != "" && types.indexOf(space.primary_type) === -1) {
-		types.push(space.primary_type);
+	if (space.types.trim() != "" && types.indexOf(space.types) === -1) {
+		types = space.types.split(",");
 	} else {
-		console.log("No primary type: " + space.name);
+		console.log("No type: " + space.name);
 	}
-	if (space.multitypes != "") {
-		var multis = space.types_multiple.split(", ");
-		for (j=0; j<multis.length; j++) {
-		if (multis[j].toLowerCase().trim() != space.primary_type.trim().toLowerCase()) {
-				types.push(multis[j]);
-			}
-		}
-	}
+
 	for (k=0; k<types.length; k++) {
 		var color = "";
 		var type = types[k];
@@ -142,13 +122,12 @@ function runFilter() {
 }
 
 function matchesFilter(marker) {
-	console.log(appliedFilters[0][0]);
 	for(var i = 0; i < appliedFilters.length; i++) {
 		if(appliedFilters[i][1] == 'all') {
 			return true;
 		}
 
-		if(!marker.placeData[appliedFilters[i][0]] || marker.placeData[appliedFilters[i][0]] !== appliedFilters[i][1]) {
+		if(!marker.placeData[appliedFilters[i][0]] || marker.placeData[appliedFilters[i][0]].toLowerCase() !== appliedFilters[i][1].toLowerCase()) {
 			return false;
 		}
 	}
