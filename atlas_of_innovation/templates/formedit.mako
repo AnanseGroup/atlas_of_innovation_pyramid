@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<%include file="/snippets/head.html" />
+<%include file="snippets/head.mako" />
 
-<%include file="/snippets/header.html" />
+<%include file="snippets/header.mako" />
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type='text/javascript' src="/js/editform.js"></script>
-<link rel="stylesheet" type="text/css" href="/css/stylesheet.css"/>
-<link rel="stylesheet" type="text/css" href="/css/form.css"/>
+    <script type='text/javascript' src="${request.static_url('atlas_of_innovation:static/js/editform.js')}"></script>
+<link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/stylesheet.css')}"/>
+<link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/form.css')}"/>
 <form id="rendered-form" name="editspace" method="get" action="/baseapi/changeSpace/${request.params.get('id')}">
 <fieldset>
 <div class="fb-text form-group field-text-name"><label for="text-name" class="fb-text-label">Name <span class="required">*</span> </label> <input type="text" required="" class="form-control" name="name" id="text-name" aria-required="true"></div>
@@ -105,4 +105,4 @@
  <button type="cancel" id="space-cancel" onclick="window.location='/uifunc/wikipage/${request.params.get('id')}';return false;">Cancel</button>
  <button type="submit" id="space-submit">Submit</button>
 </form>
-<%include file="/snippets/footer.html" />
+<%include file="snippets/footer.mako" />

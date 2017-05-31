@@ -11,7 +11,7 @@
  
  <div class="wBlockHeader">
   <div class="w-top-navigation">
-    <a href="/editspace?id=${primary_id}" >
+    <a href="/editspace/${primary_id}" >
     	<img src="/static/images/edit_button.png" id="w-top-navigation-bar-edit-button">
     </a>
 <!--a href="/" >

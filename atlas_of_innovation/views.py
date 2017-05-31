@@ -48,7 +48,9 @@ def singlefilterpreprocess(request):
     return {'filtertype':request.matchdict['param'], 'filterparam':request.matchdict['value']}
 
 
-@view_config(route_name='getspace', renderer='templates/wikipage.mako')
+@view_config(route_name='spacepage', renderer='templates/wikipage.mako')
+@view_config(route_name='editspace', renderer='templates/formedit.mako')
+@view_config(route_name='getspace', renderer='json')
 def getspace(request):
     space = request.dbsession.query(Innovation_Space).get(request.matchdict['id'])
     return space.__json__(request)
@@ -82,7 +84,16 @@ def translate_to_jsonable(spaces):
 
 @view_config(route_name='filter_innovation_spaces', renderer='json')
 def filter_innovation_spaces(request):
-    return {'project': 'atlas-of-innovation'}   
+    return {'project': 'atlas-of-innovation'}
+
+
+# @view_config(route_name='change_space', renderer='thanks.mako')
+# def changeSpace(request):
+#     #change a space
+#     #TO DO: implement change space for verified space
+
+#     result = request.dbsession.query(Innovation_Space).filter(Innovation_Space.primary_id==id).update(request.params)
+#     return {'primary_id':id}  
 
 
 db_err_msg = """\

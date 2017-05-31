@@ -1,8 +1,8 @@
 
-var currentLocation = window.location.search.toString().split("=")[1]
+var currentLocation = window.location.pathname.toString().split("/")[2]
 var services = ["Coworking","Making","Hosting Events","Selling","Trading","Incubating Startup","Educating","Vocational training","Investing","Mentoring","Donating","Transferring technology","Coliving","Repairing","Manufacturing","Prototyping","Researching"]
 var ownership = ["Civil Society","Private Sector","Hybrid Led","Government","Academic","University"]
-$.get('baseapi/getSpace',{'id':currentLocation}, function(space) {
+$.get('/baseapi/getSpace/'+currentLocation, function(space) {
 	document.getElementById('text-name').value = space["name"];
 	$("#primary-type").val(space["primary_type"]).trigger('chosen:updated');
 	document.getElementById('textarea-address').value = space["street_address"];
