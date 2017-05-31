@@ -102,7 +102,7 @@
 </div></div>
 <br/>
 </fieldset>
- <button type="cancel" id="space-cancel" onclick="window.location='/uifunc/wikipage/${request.params.get('id')}';return false;">Cancel</button>
+ <button type="cancel" id="space-cancel" onclick="window.location='/wikipage/${request.matchdict['id']}';return false;">Cancel</button>
  <button type="submit" id="space-submit">Submit</button>
 </form>
 <%include file="snippets/footer.mako" />
