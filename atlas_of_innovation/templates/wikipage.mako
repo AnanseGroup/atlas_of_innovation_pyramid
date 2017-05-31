@@ -46,7 +46,7 @@
       % endif
       <br/>
       <div id="w-address">  
-       <p><img src="/assets/pin_map.png" alt="" style="width:8px;height: 10px;">${street_address}</p> 
+       <p><img src="/static/images/pin_map.png" alt="" style="width:8px;height: 10px;">${street_address}</p> 
        % if country != None:
        <a href="/uifunc/wikilist/country?name=${country}">${country}</a>
        % endif
@@ -58,22 +58,22 @@
 
        % if twitter != None:
        <a href="${twitter | n}"  id="w-social-button" class="w-social-link">
-         <img src="/assets/social_twitter.png" class="w-social-button" >
+         <img src="/static/images/social_twitter.png" class="w-social-button" >
        </a>
        % endif
        % if googleplus != None:
        <a href="${googleplus | n}"  id="w-social-gplus"  class="w-social-link">
-         <img src="/assets/social_google+.png" class="w-social-button">
+         <img src="/static/images/social_google+.png" class="w-social-button">
        </a>
        % endif
        % if fablabs_url != None:
        <a href="${fablabs_url | n}" id="w-social-fablab" class="w-social-link">
-         <img src="/assets/social_fablab.png"  class="w-social-button">
+         <img src="/static/images/social_fablab.png"  class="w-social-button">
        </a>
        % endif
        % if facebook != None:
        <a href="${facebook | n}"  id="w-social-facebook" class="w-social-link">
-         <img src="/assets/social_facebook.png"  class="w-social-button">
+         <img src="/static/images/social_facebook.png"  class="w-social-button">
        </a>
        %endif
      </div>
