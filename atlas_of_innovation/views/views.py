@@ -5,35 +5,11 @@ from pyramid.view import view_config
 
 from sqlalchemy.exc import DBAPIError
 
-from .models.innovation_space import Innovation_Space
+from ..models.innovation_space import Innovation_Space
 
 
-@view_config(route_name='boilerplate', renderer='templates/mytemplate.mako')
-def my_view(request):
-    return {'project': 'atlas-of-innovation'}
 
-@view_config(route_name='home', renderer='templates/makermap.mako')
-@view_config(route_name='map', renderer='templates/makermap.mako')
-def map_of_innovation(request):
-    return {}
-
-@view_config(route_name='about', renderer='templates/about.mako')
-def about(request):
-    return {}
-
-@view_config(route_name='goals', renderer='templates/goals.mako')
-def goals(request):
-    return {}
-
-@view_config(route_name='userDocs', renderer='templates/user-documentation.mako')
-def userDocs(request):
-    return {}
-
-@view_config(route_name='devDocs', renderer='templates/developer-documentation.mako')
-def devDocs(request):
-    return {}
-
-@view_config(route_name='wiki', renderer='templates/wiki.mako')
+@view_config(route_name='wiki', renderer='../templates/wiki.mako')
 def wiki(request):
     with open('countries.json') as json_file:    
         data = json.load(json_file)
@@ -43,13 +19,13 @@ def wiki(request):
         return {'countries':c_list}
     return {}
 
-@view_config(route_name='singlefilterlist', renderer='templates/list.mako')
+@view_config(route_name='singlefilterlist', renderer='../templates/list.mako')
 def singlefilterpreprocess(request):
     return {'filtertype':request.matchdict['param'], 'filterparam':request.matchdict['value']}
 
 
-@view_config(route_name='spacepage', renderer='templates/wikipage.mako')
-@view_config(route_name='editspace', renderer='templates/formedit.mako')
+@view_config(route_name='spacepage', renderer='../templates/wikipage.mako')
+@view_config(route_name='editspace', renderer='../templates/formedit.mako')
 @view_config(route_name='getspace', renderer='json')
 def getspace(request):
     space = request.dbsession.query(Innovation_Space).get(request.matchdict['id'])
@@ -87,7 +63,7 @@ def filter_innovation_spaces(request):
     return {'project': 'atlas-of-innovation'}
 
 
-@view_config(route_name='change_space', renderer='templates/thanks.mako')
+@view_config(route_name='change_space', renderer='../templates/thanks.mako')
 def changeSpace(request):
     #change a space
     #TO DO: implement change space for verified space
