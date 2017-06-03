@@ -8,17 +8,6 @@ from sqlalchemy.exc import DBAPIError
 from ..models.innovation_space import Innovation_Space
 
 
-
-@view_config(route_name='wiki', renderer='../templates/wiki.mako')
-def wiki(request):
-    with open('countries.json') as json_file:    
-        data = json.load(json_file)
-        c_list=[]
-        for p in data['country']:
-            c_list.append(p['countryName'])
-        return {'countries':c_list}
-    return {}
-
 @view_config(route_name='singlefilterlist', renderer='../templates/list.mako')
 def singlefilterpreprocess(request):
     return {'filtertype':request.matchdict['param'], 'filterparam':request.matchdict['value']}
@@ -49,6 +38,7 @@ def all_innovation_spaces(request):
     except DBAPIError:
         return Response(db_err_msg, content_type='text/plain', status=500)
     return translate_to_jsonable(spaces)
+
 
 def translate_to_jsonable(spaces):
     columns = [x.__str__().split('.')[1] for x in Innovation_Space.__table__.columns]

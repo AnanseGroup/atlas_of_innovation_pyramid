@@ -53,7 +53,7 @@ def includeme(config):
     """
     Initialize the model for a Pyramid app.
 
-    Activate this setup using ``config.include('tutorial.models')``.
+    Activate this setup using ``config.include('atlas_of_innovation.models')``.
 
     """
     settings = config.get_settings()
