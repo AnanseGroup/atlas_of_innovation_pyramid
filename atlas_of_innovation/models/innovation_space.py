@@ -7,6 +7,8 @@ from sqlalchemy_utils import EmailType
 
 from .meta import Base
 
+# This is sloppy, but it should get overwritten during initialization once the rest of the __init__ code runs. 
+# It just avoids an error when loading the Innovation_Space class using reflection.
 engine = create_engine("postgres://lyla@/atlas")
 Base.metadata.bind = engine
 
