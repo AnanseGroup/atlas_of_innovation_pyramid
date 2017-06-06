@@ -15,22 +15,23 @@ from .innovation_space import Innovation_Space
 
 def usage(argv):
     cmd = os.path.basename(argv[0])
-    print('usage: %s <config_uri>\n'
-          '(example: "%s development.ini")' % (cmd, cmd))
+    print('usage: %s <config_uri> <data_csv_file>\n'
+          '(example: "%s development.ini most_up-to-date_spaces.csv")' % (cmd, cmd))
     sys.exit(1)
 
 
 def main(argv=sys.argv):
-    if len(argv) != 2:
+    if len(argv) != 3:
         usage(argv)
     config_uri = argv[1]
+    data_csv_file = argv[2]
     setup_logging(config_uri)
     settings = get_appsettings(config_uri)
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
 
     def dynamic_space_schema():
-        with open('atlas_of_innovation/models/most_up-to-date_spaces.csv') as csvfile:
+        with open(data_csv_file) as csvfile:
             reader = csv.DictReader(csvfile)
             for key in reader.__next__().keys():
                 if not getattr(Innovation_Space, key, None):
@@ -40,7 +41,7 @@ def main(argv=sys.argv):
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
-    with open('atlas_of_innovation/models/most_up-to-date_spaces.csv') as csvfile:
+    with open(data_csv_file) as csvfile:
         reader = csv.DictReader(csvfile)
         spaces = [{key: value if not value == '' else None for key, value in row.items()} for row in reader]
         spaces = [Innovation_Space(**space) for space in spaces]
