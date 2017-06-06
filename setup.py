@@ -51,7 +51,7 @@ setup(
             'main = atlas_of_innovation:main',
         ],
         'console_scripts' : [
-            'initialize_tutorial_db = atlas_of_innovation.initialize_db:main'
+            'reset_db = atlas_of_innovation.models.reset_db:main'
         ]
     },
 )

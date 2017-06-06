@@ -40,31 +40,4 @@ class Innovation_Space(Base):
     def __json__(self, request):
         return { column: getattr(self, column) for column in self._column_names() }
 
-if __name__ == "__main__":
-    from sqlalchemy.orm import Session
-    import csv
-    import inspect
-    #If run as main, reset the engine
-    engine = sqlalchemy.create_engine("postgres://lyla@/atlas")
-    print ("asdf;lkjasdnf")
 
-    def dynamic_space_schema():
-        with open('most_up-to-date_spaces.csv') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for key in reader.__next__().keys():
-                if not getattr(Innovation_Space, key, None):
-                    setattr(Innovation_Space, key, Column(String))
-    dynamic_space_schema()
-    Base.metadata.drop_all(engine)
-    Base.metadata.create_all(engine)
-
-
-    session = Session(bind=engine)
-    with open('most_up-to-date_spaces.csv') as csvfile:
-        reader = csv.DictReader(csvfile)
-        spaces = [{key: value if not value == '' else None for key, value in row.items()} for row in reader]
-        spaces = [Innovation_Space(**space) for space in spaces]
-        print(spaces)
-        session.add_all(spaces)
-        session.commit()
-    session.close()
