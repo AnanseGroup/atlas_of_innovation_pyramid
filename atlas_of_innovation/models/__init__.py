@@ -5,6 +5,7 @@ import zope.sqlalchemy
 
 # import or define all models here to ensure they are attached to the
 # Base.metadata prior to any initialization routines
+from .meta import Base
 from .innovation_space import Innovation_Space  # flake8: noqa
 
 # run configure_mappers after defining all of the models to ensure
@@ -60,6 +61,8 @@ def includeme(config):
 
     # use pyramid_tm to hook the transaction lifecycle to the request
     config.include('pyramid_tm')
+
+    Base.metadata.bind = get_engine(settings)
 
     session_factory = get_session_factory(get_engine(settings))
     config.registry['dbsession_factory'] = session_factory
