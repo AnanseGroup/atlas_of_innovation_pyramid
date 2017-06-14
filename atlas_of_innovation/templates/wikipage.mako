@@ -57,6 +57,12 @@
       <br/>
       <div id="w-address">  
        <p><img src="/static/images/pin_map.png" alt="" style="width:8px;height: 10px;">${street_address}</p> 
+       % if city != None:
+       ${city}, 
+       % endif
+       % if state != None:
+      ${state}, 
+       % endif
        % if country != None:
        <a href="/uifunc/wikilist/country?name=${country}">${country}</a>
        % endif
