@@ -23,7 +23,7 @@ def getspace(request):
                 "street_address", "country", "twitter", "googleplus", "fablabs_url", 
                 "facebook", "primary_id", "image_url", "last_updated", "latitude", 
                 "longitude", "city", "state"]
-    formatted = {key:space[key] for key in formats} #TODO define formats
+   formatted = {key:space[key] for key in formats} #TODO define formats
     generic = {key:space[key] for key in space if not key in formatted}
     formatted['generic'] = generic
     return formatted
