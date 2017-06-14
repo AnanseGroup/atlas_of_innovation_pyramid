@@ -1,32 +1,26 @@
 import sqlalchemy
 import psycopg2
 from sqlalchemy import Column, Integer, String, Float, create_engine
-from sqlalchemy.schema import Table
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy_utils import EmailType
 
 from .meta import Base
 
-# This is sloppy, but it should get overwritten during initialization once the rest of the __init__ code runs. 
-# It just avoids an error when loading the Innovation_Space class using reflection.
-engine = create_engine("postgres://lyla@/atlas")
-Base.metadata.bind = engine
 
 class Innovation_Space(Base):
     __tablename__ = "innovation_space"
-    __table__ = Table(__tablename__, Base.metadata, autoload=True)
-
-    # primary_id = Column(Integer, primary_key=True, autoincrement=True)
-    # name = Column(String)
-    # email = Column(String)
-    # aliases = Column(String)
-    # street_address = Column(String)
-    # city = Column(String)
-    # state = Column(String)
-    # country = Column(String)
-    # latitude = Column(Float, nullable=True)
-    # longitude = Column(Float, nullable=True)
-    # phone = Column(String)
+    
+    primary_id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String)
+    email = Column(String)
+    aliases = Column(String)
+    street_address = Column(String)
+    city = Column(String)
+    state = Column(String)
+    country = Column(String)
+    latitude = Column(Float, nullable=True)
+    longitude = Column(Float, nullable=True)
+    phone = Column(String)
 
     def __repr__(self):
         return "<Innovation_Space(name: %r at street_address: %r and email: %r)>" \

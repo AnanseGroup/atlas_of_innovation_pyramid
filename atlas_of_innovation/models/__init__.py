@@ -1,6 +1,7 @@
 from sqlalchemy import engine_from_config
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import configure_mappers
+from sqlalchemy.schema import Table
 import zope.sqlalchemy
 
 # import or define all models here to ensure they are attached to the
@@ -63,6 +64,8 @@ def includeme(config):
     config.include('pyramid_tm')
 
     Base.metadata.bind = get_engine(settings)
+    Innovation_Space.__table__ = Table(Innovation_Space.__tablename__, Base.metadata, autoload=True)
+    Base.prepare(Base.metadata.bind, reflect=True)
 
     session_factory = get_session_factory(get_engine(settings))
     config.registry['dbsession_factory'] = session_factory

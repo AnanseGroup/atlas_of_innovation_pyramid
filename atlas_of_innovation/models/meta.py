@@ -1,4 +1,4 @@
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.schema import MetaData
 from sqlalchemy.orm import (
     scoped_session,
@@ -19,7 +19,7 @@ NAMING_CONVENTION = {
 }
 
 metadata = MetaData(naming_convention=NAMING_CONVENTION)
-Base = declarative_base(metadata=metadata)
+Base = automap_base(metadata=metadata)
 
 DBSession = scoped_session(
     sessionmaker(extension=ZopeTransactionExtension()))
