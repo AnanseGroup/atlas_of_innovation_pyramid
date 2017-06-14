@@ -63,9 +63,10 @@ def includeme(config):
     # use pyramid_tm to hook the transaction lifecycle to the request
     config.include('pyramid_tm')
 
-    Base.metadata.bind = get_engine(settings)
+    engine = get_engine(settings)
+    Base.metadata.bind = engine
     Innovation_Space.__table__ = Table(Innovation_Space.__tablename__, Base.metadata, autoload=True)
-    Base.prepare(Base.metadata.bind, reflect=True)
+    Base.prepare(engine, reflect=True)
 
     session_factory = get_session_factory(get_engine(settings))
     config.registry['dbsession_factory'] = session_factory

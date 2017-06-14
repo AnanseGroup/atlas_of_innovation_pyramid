@@ -66,7 +66,6 @@ def changeSpace(request):
     #change a space
     #TO DO: implement change space for verified space
 
-    print (request.params)
     result = request.dbsession.query(Innovation_Space).filter(Innovation_Space.primary_id==request.matchdict['id']).update(request.params)
     return {'primary_id':id}  
 
