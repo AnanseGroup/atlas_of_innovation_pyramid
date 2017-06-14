@@ -25,19 +25,29 @@
 	</div>
 </div-->
 <div class="wBlockOne">
-  <img src="/static/images/Placeholder_logo.png" alt="#" style="height: 100px; display:block;margin-left: auto;margin-right: auto;">
+  <!-- <img src="/static/images/Placeholder_logo.png" alt="#" style="height: 100px; display:block;margin-left: auto;margin-right: auto;"> -->
   <p ></p>
   <h2 id="wTitle">${name}</h2>
   % if primary_website != None:
   <a id="wWebsite" href="http://${primary_website | n}" target="_blank">${primary_website | n}</a>
   % endif
+  % if status != None:
   <p id="wStatus">${status}</p>
+  % else:
+  <p id="wStatus">Unknown Activity Level</p>
+  % endif
+  % if types != None:
   <p id="wType">${types}</p>
+  % else:
+  <p id="wType">Hub</p>
+  % endif
+  % if description != None:
   <p id="w-space-description">${description}</p>
+  % endif
   <hr />
 </div>
 
-<div class="wBlockTwo">
+<div class="wBlockFour">
   <div class="rowAlign">
     <div class="rowTextBlock">
       <p id="wBlockSubTitle">Contact Info</p>
@@ -53,7 +63,7 @@
      </div> 
    </div>
    <div class="rowTextBlock">
-     <p id="wBlockSubTitle">Social Media</p>
+     <p id="wBlockSubTitle">External Links</p>
      <div class="social-media-block">
 
        % if twitter != None:
@@ -78,39 +88,14 @@
        %endif
      </div>
    </div>
-   <div class="rowTextBlock">
-    <p id="wBlockSubTitle">Themes</p>
-    <p id="textBlock">${theme}</p>
-  </div>
-  <div class="rowTextBlock">
-    <p id="wBlockSubTitle">Source</p>
-    <p "textBlock">${source}</p>
-  </div>
-</div>
-<hr/>
-</div>
-<div class="wBlockFour">
-  <div class="rowAlign">
-    <div class="rowTextBlock">
-      <p id="wBlockSubTitle">Affiliation</p>
-      <p>${network_affiliation}</p>
-    </div>
-    <div class="rowTextBlock">
-      <p id="wBlockSubTitle">Ownership</p>
-      <p>${ownership}</p>
-    </div>
-    <div class="rowTextBlock">
-      <p id="wBlockSubTitle">Services & Capabilities</p>
-      <p id="textBlock">${services}</p>
-      <p id="textBlock">${tools} </p>
-    </div>
-    <div class="rowTextBlock">
-      <p id="wBlockSubTitle">Members</p>
-      <p>${number_of_members}</p>
-    </div>
-
-  </div>
-  <hr/>
+   % for field, value in generic.items():
+      % if not value == None:
+         <div class="rowTextBlock">
+          <p id="wBlockSubTitle">${field}</p>
+          <p id="textBlock">${value}</p>
+        </div>
+      % endif
+  % endfor
 </div>
 
 <div class="wBlockTh">
@@ -121,6 +106,8 @@
  </div>
 </div>
 % endif
+% if last_updated != None:
 <p>${last_updated}</p>
+% endif
 </body>
 </html>

@@ -18,7 +18,14 @@ def singlefilterpreprocess(request):
 @view_config(route_name='getspace', renderer='json')
 def getspace(request):
     space = request.dbsession.query(Innovation_Space).get(request.matchdict['id'])
-    return space.__json__(request)
+    space = space.__json__(request)
+    formats = ["name", "primary_website", "status", "types", "description", "email",
+                "street_address", "country", "twitter", "googleplus", "fablabs_url", 
+                "facebook", "primary_id", "image_url", "last_updated", "latitude", "longitude"]
+    formatted = {key:space[key] for key in formats} #TODO define formats
+    generic = {key:space[key] for key in space if not key in formatted}
+    formatted['generic'] = generic
+    return formatted
 
 
 @view_config(route_name='singlefilter', renderer='json')
