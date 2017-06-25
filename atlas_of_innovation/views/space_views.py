@@ -13,10 +13,16 @@ def singlefilterpreprocess(request):
     return {'filtertype':request.matchdict['param'], 'filterparam':request.matchdict['value']}
 
 
-@view_config(route_name='spacepage', renderer='../templates/wikipage.mako')
 @view_config(route_name='editspace', renderer='../templates/formedit.mako')
 @view_config(route_name='getspace', renderer='json')
 def getspace(request):
+    space = request.dbsession.query(Innovation_Space).get(request.matchdict['id'])
+    space = space.__json__(request)
+    return space
+
+
+@view_config(route_name='spacepage', renderer='../templates/wikipage.mako')
+def getformattedspace(request):
     space = request.dbsession.query(Innovation_Space).get(request.matchdict['id'])
     space = space.__json__(request)
     formats = ["name", "primary_website", "status", "types", "description", "email",

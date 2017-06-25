@@ -11,12 +11,12 @@ $.get('/baseapi/getSpace/'+currentLocation, function(space) {
 	document.getElementById('text-email').value = space["email"];
 	document.getElementById('textarea-description').value = space["description"];
 	document.getElementById('number-phone').value = space["phone"];
-	document.getElementById('textarea-tools').value = (space["tools"]).toString();
+	document.getElementById('textarea-tools').value = space["tools"];
 	$("#members").val(space["number_of_members"]).trigger('chosen:updated');
 	 $("#theme").val(space["theme"]).trigger('chosen:updated');
 	$("#affiliation").val(space["network_affiliation"]).trigger('chosen:updated');
 	$("#select-status").val(space["status"]).trigger('chosen:updated');
-	if(space["services"]!="")
+	if(space["services"]!=null)
 	{
 	service_list = space["services"].split(",") ;
    for (var i = 0; i < service_list.length; i++) {
@@ -26,7 +26,7 @@ $.get('/baseapi/getSpace/'+currentLocation, function(space) {
    	}
    	}
 	
-	if(space["ownership"]!="")
+	if(space["ownership"]!=null)
         {
         ownership_list = space["ownership"].split(",") ;
    for (var i = 0; i < ownership_list.length; i++) {
