@@ -6,7 +6,7 @@
     <script type='text/javascript' src="${request.static_url('atlas_of_innovation:static/js/editform.js')}"></script>
 <link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/stylesheet.css')}"/>
 <link rel="stylesheet" type="text/css" href="${request.static_url('atlas_of_innovation:static/css/form.css')}"/>
-<form id="rendered-form" name="editspace" method="get" action="/baseapi/changeSpace/${request.matchdict['id']}">
+<form id="rendered-form" name="editspace" method="get" action="/api/changeSpace/${request.matchdict['id']}">
 <fieldset>
 <div class="fb-text form-group field-text-name"><label for="text-name" class="fb-text-label">Name <span class="required">*</span> </label> <input type="text" required="" class="form-control" name="name" id="text-name" aria-required="true"></div>
 </fieldset>
