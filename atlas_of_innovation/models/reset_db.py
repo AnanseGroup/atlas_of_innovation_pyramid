@@ -29,13 +29,13 @@ def main(argv=sys.argv):
     settings = get_appsettings(config_uri)
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
+    Base.prepare(engine)
 
     def dynamic_space_schema():
         with open(data_csv_file) as csvfile:
             reader = csv.DictReader(csvfile)
             for key in reader.__next__().keys():
-                if not getattr(Innovation_Space, key, None):
-                    print ("setting "+ key)
+                if getattr(Innovation_Space, key, None) is None:
                     setattr(Innovation_Space, key, Column(String))
     dynamic_space_schema()
     Base.metadata.drop_all(engine)
