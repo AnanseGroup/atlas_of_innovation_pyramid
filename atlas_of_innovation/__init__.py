@@ -32,12 +32,12 @@ def main(global_config, **settings):
     # individual spaces
     config.add_route('spacepage', '/wikipage/{id}')
     config.add_route('editspace', '/editspace/{id}')
-    config.add_route('getspace', '/baseapi/getSpace/{id}')
-    config.add_route('change_space', '/baseapi/changeSpace/{id}')
+    config.add_route('getspace', '/api/getSpace/{id}')
+    config.add_route('change_space', '/api/changeSpace/{id}')
 
     # bulk actions
-    config.add_route('all_innovation_spaces', '/baseapi/getAllSpaces')
-    config.add_route('filter_innovation_spaces', '/baseapi/filteredSpaces')
+    config.add_route('all_innovation_spaces', '/api/getAllSpaces')
+    config.add_route('filter_innovation_spaces', '/api/filteredSpaces')
     config.add_route('singlefilterlist', '/uifunc/wikilist/{param}/{value}')
     config.add_route('singlefilter', '/searchapi/findSpacesByType')
 
