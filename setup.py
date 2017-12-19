@@ -13,6 +13,9 @@ requires = [
     'pyramid_mako',
     'pyramid_debugtoolbar',
     'waitress',
+    'sqlalchemy',
+    'pyramid_tm',
+    'zope.sqlalchemy',
 ]
 
 tests_require = [
@@ -47,5 +50,8 @@ setup(
         'paste.app_factory': [
             'main = atlas_of_innovation:main',
         ],
+        'console_scripts' : [
+            'reset_db = atlas_of_innovation.models.reset_db:main'
+        ]
     },
 )
