@@ -30,20 +30,20 @@ def main(argv=sys.argv):
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
     Base.prepare(engine)
-
-    def dynamic_space_schema():
-        with open(data_csv_file) as csvfile:
-            reader = csv.DictReader(csvfile)
-            for key in reader.__next__().keys():
-                if getattr(Innovation_Space, key, None) is None:
-                    setattr(Innovation_Space, key, Column(String))
-    dynamic_space_schema()
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
     with open(data_csv_file) as csvfile:
         reader = csv.DictReader(csvfile)
-        spaces = [{key: value if not value == '' else None for key, value in row.items()} for row in reader]
-        spaces = [Innovation_Space(**space) for space in spaces]
+        # replace empty strings with None
+        complete_spaces = [{key: value if not value == '' else None for key, value in row.items()} for row in reader]
+        processed_spaces = []
+        for space in complete_spaces:
+            processed_space = {}
+            for attribute in Innovation_Space._column_names():
+                processed_space[attribute]=space.pop(attribute, None)
+            processed_space['other'] = space
+            processed_spaces.append(processed_space)
+        spaces = [Innovation_Space(**space) for space in processed_spaces]
         with transaction.manager:
             DBSession.add_all(spaces)

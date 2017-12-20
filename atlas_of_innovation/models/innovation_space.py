@@ -3,6 +3,7 @@ import psycopg2
 from sqlalchemy import Column, Integer, String, Float, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy_utils import EmailType
+from sqlalchemy.types import JSON
 
 from .meta import Base
 
@@ -21,19 +22,24 @@ class Innovation_Space(Base):
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
     phone = Column(String)
+    
+    other = Column(JSON)
 
     def __repr__(self):
         return "<Innovation_Space(name: %r at street_address: %r and email: %r)>" \
                     % (self.name, self.street_address, self.email)
 
     _column_names_list = None
-    def _column_names(self):
-      if not self._column_names_list:
-        self._column_names_list = [x.__str__().split('.')[1] for x in self.__table__.columns]
-      return self._column_names_list
+    def _column_names():
+      if not Innovation_Space._column_names_list:
+        Innovation_Space._column_names_list = [x.__str__().split('.')[1] for x in Innovation_Space.__table__.columns]
+      return Innovation_Space._column_names_list
 
 
     def __json__(self, request):
-        return { column: getattr(self, column) for column in self._column_names() }
+        json_object = { column: getattr(self, column) for column in Innovation_Space._column_names() }
+        other = json_object.pop('other')
+        json_object.update(other)
+        return json_object
 
 
