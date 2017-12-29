@@ -61,11 +61,6 @@ def translate_to_jsonable(spaces):
     return spaceslist
 
 
-@view_config(route_name='filter_innovation_spaces', renderer='json')
-def filter_innovation_spaces(request):
-    return {'project': 'atlas-of-innovation'}
-
-
 @view_config(route_name='change_space', renderer='../templates/thanks.mako')
 def changeSpace(request):
     #change a space

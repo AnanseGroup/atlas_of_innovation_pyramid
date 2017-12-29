@@ -37,7 +37,6 @@ def main(global_config, **settings):
 
     # bulk actions
     config.add_route('all_innovation_spaces', '/api/getAllSpaces')
-    config.add_route('filter_innovation_spaces', '/api/filteredSpaces')
     config.add_route('singlefilterlist', '/uifunc/wikilist/{param}/{value}')
     config.add_route('singlefilter', '/searchapi/findSpacesByType')
 
