@@ -12,9 +12,12 @@ class APITests(unittest.TestCase):
         from atlas_of_innovation.models.meta import Base
         session_factory = self.config.registry['dbsession_factory']
         engine = session_factory.kw['bind']
-        # Base.prepare(engine)
-        # Base.metadata.drop_all(engine)
+        Base.prepare(engine)
+        Base.metadata.drop_all(engine)
         Base.metadata.create_all(engine)
+
+        from atlas_of_innovation.models import reset_db
+        reset_db.main(argv=["reset_db", self.config.get_settings()['__file__'], "atlas_of_innovation/tests/test_spaces.csv"])
 
     def setUp(self):
         from pyramid.paster import get_appsettings
@@ -36,7 +39,14 @@ class APITests(unittest.TestCase):
 
     def tearDown(self):
         testing.tearDown()
+
         transaction.abort()
+
+        from atlas_of_innovation.models.meta import Base
+        session_factory = self.config.registry['dbsession_factory']
+        engine = session_factory.kw['bind']
+        Base.metadata.drop_all(engine)
+
 
     def test_map_requirements(self):
         from atlas_of_innovation.views.space_views import all_innovation_spaces
