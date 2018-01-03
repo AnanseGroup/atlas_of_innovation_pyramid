@@ -35,32 +35,6 @@ def getformattedspace(request):
     return formatted
 
 
-@view_config(route_name='singlefilter', renderer='json')
-def singlefilter(request):
-    try:
-        spaces = request.dbsession.query(Innovation_Space)\
-            .filter(getattr(Innovation_Space, request.params['type'])==request.params['name']).all()
-    except DBAPIError:
-        return Response(db_err_msg, content_type='text/plain', status=500)
-    return translate_to_jsonable(spaces)
-
-
-@view_config(route_name='all_innovation_spaces', renderer='json')
-def all_innovation_spaces(request):
-    try:
-        spaces = request.dbsession.query(Innovation_Space).all()
-    except DBAPIError:
-        return Response(db_err_msg, content_type='text/plain', status=500)
-    return translate_to_jsonable(spaces)
-
-
-def translate_to_jsonable(spaces):
-    spaceslist = []
-    for space in spaces:
-        spaceslist.append(space.__json__(request="dummy request"))
-    return spaceslist
-
-
 @view_config(route_name='change_space', renderer='../templates/thanks.mako')
 def changeSpace(request):
     #change a space
@@ -69,8 +43,4 @@ def changeSpace(request):
     result = request.dbsession.query(Innovation_Space).filter(Innovation_Space.primary_id==request.matchdict['id']).update(request.params)
     return {'primary_id':id}  
 
-
-db_err_msg = """\
-We are having some trouble fetching the data that you just requested. The failure has been logged, but if you send an email to 
-"""
 
