@@ -49,7 +49,7 @@ class APITests(unittest.TestCase):
 
 
     def test_map_requirements(self):
-        from atlas_of_innovation.views.space_views import all_innovation_spaces
+        from atlas_of_innovation.views.API_views import all_innovation_spaces
         request = dummy_request(self.session)
         info = all_innovation_spaces(request)
         self.assertIn('latitude', info[0])
