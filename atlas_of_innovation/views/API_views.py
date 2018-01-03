@@ -36,6 +36,6 @@ def translate_to_jsonable(spaces):
 
 
 db_err_msg = """\
-We are having some trouble fetching the data that you just requested. The failure has been logged, but if you send an email to 
+We are having some trouble fetching the data that you just requested. 
 """
 
