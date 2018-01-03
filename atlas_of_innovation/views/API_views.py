@@ -29,10 +29,9 @@ def all_innovation_spaces(request):
 
 
 def translate_to_jsonable(spaces):
-    columns = [x.__str__().split('.')[1] for x in Innovation_Space.__table__.columns]
     spaceslist = []
     for space in spaces:
-        spaceslist.append({ column: getattr(space, column) for column in columns })
+        spaceslist.append(space.__json__(request="dummy request"))
     return spaceslist
 
 
