@@ -16,7 +16,7 @@ def singlefilter(request):
             .filter(getattr(Innovation_Space, request.params['type'])==request.params['name']).all()
     except DBAPIError:
         return Response(db_err_msg, content_type='text/plain', status=500)
-    return translate_to_jsonable(spaces)
+    return jsonable_list(spaces)
 
 
 @view_config(route_name='all_innovation_spaces', renderer='json')
@@ -25,10 +25,10 @@ def all_innovation_spaces(request):
         spaces = request.dbsession.query(Innovation_Space).all()
     except DBAPIError:
         return Response(db_err_msg, content_type='text/plain', status=500)
-    return translate_to_jsonable(spaces)
+    return jsonable_list(spaces)
 
 
-def translate_to_jsonable(spaces):
+def jsonable_list(spaces):
     spaceslist = []
     for space in spaces:
         spaceslist.append(space.__json__(request="dummy request"))
