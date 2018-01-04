@@ -7,6 +7,7 @@
     <a href="/about" id="navigation-bar-about-button" class="navigation-bar-button">ABOUT</a>
     <a href="/docs" id="navigation-bar-document-licensing-button" class="navigation-bar-button">DOCUMENTATION & LICENSING</a>
     <a href="/wiki" id="navigation-bar-wiki-button" class="navigation-bar-button">WIKI</a>
+    <a href="/contribute" id="navigation-bar-contribute-button" class="navigation-bar-button">CONTRIBUTE</a>
     <a href="mailto:anansegroup@gmail.com" id="navigation-bar-contact-button" class="no-underline navigation-right dark-blue">Contact Us</a>
 	</div>
 </div>

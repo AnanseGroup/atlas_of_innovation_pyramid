@@ -41,3 +41,7 @@ class RoutingTests(unittest.TestCase):
         res = self.testapp.get('/wiki', status=200)
         self.assertIn(b'Countries', res.body)
 
+    def test_contribute(self):
+        res = self.testapp.get('/contribute', status=200)
+        self.assertIn(b'Thanks for your interest in supporting this Atlas', res.body)
+

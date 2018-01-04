@@ -10,23 +10,28 @@ def map_of_innovation(request):
     return {}
 
 
-@view_config(route_name='about', renderer='../templates/about.mako')
+@view_config(route_name='about', renderer='../templates/static/about.mako')
 def about(request):
     return {}
 
 
-@view_config(route_name='goals', renderer='../templates/goals.mako')
+@view_config(route_name='goals', renderer='../templates/static/goals.mako')
 def goals(request):
     return {}
 
 
-@view_config(route_name='userDocs', renderer='../templates/user-documentation.mako')
+@view_config(route_name='userDocs', renderer='../templates/static/user-documentation.mako')
 def userDocs(request):
     return {}
 
 
-@view_config(route_name='devDocs', renderer='../templates/developer-documentation.mako')
+@view_config(route_name='devDocs', renderer='../templates/static/developer-documentation.mako')
 def devDocs(request):
+    return {}
+
+
+@view_config(route_name='contribute', renderer='../templates/static/contribute.mako')
+def contribute(request):
     return {}
 
 

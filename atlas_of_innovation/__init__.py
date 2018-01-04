@@ -28,6 +28,7 @@ def main(global_config, **settings):
     config.add_route('userDocs', '/docs')
     config.add_route('devDocs', '/docs/developer')
     config.add_route('wiki', '/wiki')
+    config.add_route('contribute', '/contribute')
 
     # individual spaces
     config.add_route('spacepage', '/wikipage/{id}')
