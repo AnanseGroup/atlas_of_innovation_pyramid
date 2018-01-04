@@ -1,11 +1,9 @@
-<%include file="snippets/head.mako" />
+<%include file="../snippets/head.mako" />
 
-<%include file="snippets/header.mako" />
-
-<%include file="snippets/contribute.mako" />
+<%include file="../snippets/header.mako" />
 
 <div id="goals-page" class="container">
-	<%include file="snippets/docs-menu.mako"/>
+	<%include file="../snippets/docs-menu.mako"/>
 <section class="page-content columns source-sans">
 		<div>			
 <div>
@@ -30,4 +28,4 @@
 	</section> 
 </div>
 
-<%include file="snippets/footer.mako" />
+<%include file="../snippets/footer.mako" />

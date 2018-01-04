@@ -3,10 +3,6 @@
 <%include file="snippets/head.mako" />
 <%include file="snippets/header.mako" />
 
-<!--%include file="/snippets/wiki-filter-bar.html" /-->
-
-<%include file="snippets/contribute.mako" />
-
 <div class="container wiki-content source-sans">
 	<div class="columns two columns-wide">
 		<!--div>

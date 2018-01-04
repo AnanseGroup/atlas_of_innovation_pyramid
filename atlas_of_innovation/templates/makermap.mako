@@ -16,8 +16,6 @@
 
     <%include file="snippets/header.mako" />
 
-    <%include file="snippets/contribute.mako" />
-
     <div id="map-page-title-container">
     	<h1 id="map-page-title">Crowdsourced Atlas of Community Innovation Spaces</h1>
     </div>

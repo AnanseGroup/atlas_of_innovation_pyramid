@@ -396,18 +396,6 @@ a img {
   top: 3px;
 }
 
-.hero-container {
-	height: auto;
-	width: 100%;
-	overflow: hidden;
-	background-image: url('/static/images/banner_bg.png');
-	background-size: cover;
-	transition: height .15s ease-in-out;
-	-webkit-transition: height .15s ease-in-out;
-	-moz-transition: height .15s ease-in-out;
-	-o-transition: height .15s ease-in-out;
-}
-
 #contribute-bar-container.closed {
 	height: 50px;
 }
@@ -440,38 +428,8 @@ a img {
   text-align: center
 }
 
-.hero-content {
-	max-width: 450px;
-	text-align: center;
-	margin: 0 auto;
-}
-
-.hero-content p {
-	font-size: 1.2em;
-	font-weight: 300;
-}
-
-.hero-content .header {
-	font-size: 2.5em;
-	letter-spacing: 0.03em;					
-	margin: 0px 0;
-}
-
 #contribute-bar-container {
 	background-color: rgba(0, 0, 0, 0.03);
-}
-
-#page-hero {
-	background-color: rgba(157, 242, 231, 0.3);
-	background-image: url('/static/images/bg_lines_left.png');
-	background-size: contain;
-	background-repeat: no-repeat;
-}
-
-#page-hero .header {
-	font-size: 1.3em;
-	margin: 30px 0;
-	color: #00d4d2;
 }
 
 .page-footer {

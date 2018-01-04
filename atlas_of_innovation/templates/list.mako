@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <%include file="snippets/head.mako" />
 <%include file="snippets/header.mako" />
-<!--%include file="/snippets/wiki-filter-bar.html" /-->
-
-<%include file="snippets/contribute.mako" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <div class="container wiki-content source-sans">
