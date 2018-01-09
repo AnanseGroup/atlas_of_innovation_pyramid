@@ -3,21 +3,7 @@ import unittest
 from pyramid import testing
 
 
-class ViewTests(unittest.TestCase):
-    def setUp(self):
-        self.config = testing.setUp()
-
-    def tearDown(self):
-        testing.tearDown()
-
-    # def test_my_view(self):
-    #     from .views import my_view
-    #     request = testing.DummyRequest()
-    #     info = my_view(request)
-    #     self.assertEqual(info['project'], 'atlas-of-innovation')
-
-
-class FunctionalTests(unittest.TestCase):
+class RoutingTests(unittest.TestCase):
     def setUp(self):
         from pyramid.paster import get_appsettings
         settings = get_appsettings('pytest.ini', name='main')
