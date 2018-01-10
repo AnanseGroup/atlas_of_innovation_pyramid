@@ -4,6 +4,7 @@ from pyramid.response import Response
 from pyramid.view import view_config
 
 from sqlalchemy.exc import DBAPIError
+from sqlalchemy.orm.attributes import flag_modified
 
 from ..models.innovation_space import Innovation_Space
 
@@ -35,12 +36,18 @@ def getformattedspace(request):
     return formatted
 
 
-@view_config(route_name='change_space', renderer='../templates/thanks.mako')
+@view_config(route_name='change_space', renderer='../templates/static/thanks.mako')
 def changeSpace(request):
-    #change a space
     #TO DO: implement change space for verified space
-
-    result = request.dbsession.query(Innovation_Space).filter(Innovation_Space.primary_id==request.matchdict['id']).update(request.params)
+    space = request.dbsession.query(Innovation_Space).filter(Innovation_Space.primary_id==request.matchdict['id']).one()
+    other_attrs = getattr(space, 'other')
+    for attr, value in request.params.dict_of_lists().items():
+        if getattr(space, attr, None):
+            setattr(space, attr, value[-1])
+        else:
+            other_attrs[attr] = value
+    space.other = other_attrs
+    flag_modified(space, "other")
     return {'primary_id':id}  
 
 
