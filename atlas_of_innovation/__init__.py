@@ -2,7 +2,7 @@ from pyramid.config import Configurator
 
 from sqlalchemy import engine_from_config
 
-from .models.example import DBSession, Base
+from .models.meta import DBSession, Base
 
 
 def main(global_config, **settings):
@@ -13,7 +13,7 @@ def main(global_config, **settings):
     DBSession.configure(bind=engine)
     Base.metadata.bind = engine
 
-    config = Configurator(settings=settings, root_factory='atlas_of_innovation.models.example.Root')
+    config = Configurator(settings=settings)
     config.include('pyramid_mako')
     config.include('.models')
 
