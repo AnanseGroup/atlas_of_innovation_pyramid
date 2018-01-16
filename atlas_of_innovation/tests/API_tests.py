@@ -8,7 +8,7 @@ def dummy_request(dbsession):
 
 
 class APITests(unittest.TestCase):
-    def init_database(self):
+    def init_database(self, settings_file):
         from atlas_of_innovation.models.meta import Base
         session_factory = self.config.registry['dbsession_factory']
         engine = session_factory.kw['bind']
@@ -17,11 +17,12 @@ class APITests(unittest.TestCase):
         Base.metadata.create_all(engine)
 
         from atlas_of_innovation.models import reset_db
-        reset_db.main(argv=["reset_db", self.config.get_settings()['__file__'], "atlas_of_innovation/tests/test_spaces.csv"])
+        reset_db.main(argv=["reset_db", settings_file, "atlas_of_innovation/tests/test_spaces.csv"])
 
     def setUp(self):
         from pyramid.paster import get_appsettings
-        settings = get_appsettings('pytest.ini', name='main')
+        settings_file = "pytest.ini"
+        settings = get_appsettings(settings_file, name='main')
         from atlas_of_innovation.models import get_tm_session
         self.config = testing.setUp(settings=settings)
 
@@ -35,7 +36,7 @@ class APITests(unittest.TestCase):
 
         session_factory = self.config.registry['dbsession_factory']
         self.session = get_tm_session(session_factory, transaction.manager)
-        self.init_database()
+        self.init_database(settings_file)
 
     def tearDown(self):
         testing.tearDown()
